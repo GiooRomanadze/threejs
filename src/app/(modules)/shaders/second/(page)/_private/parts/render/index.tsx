@@ -1,21 +1,27 @@
-'use client';
-
+import { useRef } from 'react';
+import type { Mesh } from 'three';
 import { OrbitControls } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import fragmentShader from './parts/fragment/index.frag';
 import vertexShader from './parts/vertex/index.vert';
 
-const First = () => {
+const Render = () => {
+  const ref = useRef<Mesh>(null);
+
+  useFrame((state) => {
+    if (!ref.current) return;
+  });
+
   return (
-    <Canvas>
+    <>
       <OrbitControls />
 
-      <mesh>
+      <mesh ref={ref}>
         <planeGeometry args={[1, 1, 32, 32]} />
         <rawShaderMaterial vertexShader={vertexShader} fragmentShader={fragmentShader} />
       </mesh>
-    </Canvas>
+    </>
   );
 };
 
-export default First;
+export default Render;
