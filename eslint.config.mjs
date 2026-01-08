@@ -2,6 +2,7 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTs from 'eslint-config-next/typescript';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import react from 'eslint-plugin-react';
 
 const disallowDeclaration = [
   'FunctionExpression',
@@ -26,6 +27,11 @@ const rules = {
   'no-restricted-syntax': ['error', ...disallowDeclaration],
   '@typescript-eslint/prefer-function-type': 'error',
   '@typescript-eslint/naming-convention': ['error', tsNaming],
+
+  'simple-import-sort/imports': 'error',
+  'simple-import-sort/exports': 'error',
+
+  ''
 };
 
 export default defineConfig([
@@ -34,10 +40,7 @@ export default defineConfig([
 
   globalIgnores(['**/node_modules/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
 
-  { rules },
+  { plugins: { react: react, 'simple-import-sort': simpleImportSort } },
 
-  {
-    plugins: { 'simple-import-sort': simpleImportSort },
-    rules: { 'simple-import-sort/imports': 'error', 'simple-import-sort/exports': 'error' },
-  },
+  { rules },
 ]);
