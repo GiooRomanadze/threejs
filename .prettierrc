@@ -10,7 +10,5 @@
   "jsxSingleQuote": false,
   "bracketSameLine": false,
   "endOfLine": "lf",
-  "importOrder": ["<THIRD_PARTY_MODULES>", "^@", "^[./]", "(.*\\.css)$"],
-  "importOrderSortSpecifiers": true,
-  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-css-order"]
+  "plugins": ["prettier-plugin-css-order"]
 }

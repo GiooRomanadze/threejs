@@ -1,4 +1,5 @@
 import './_private/styles/index.css';
+
 import type { RootLayoutFn } from './types';
 
 const RootLayout: RootLayoutFn = ({ children }) => (

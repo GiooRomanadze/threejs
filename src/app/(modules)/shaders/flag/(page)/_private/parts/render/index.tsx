@@ -1,8 +1,9 @@
+import { OrbitControls } from '@react-three/drei';
+import { useFrame, useLoader } from '@react-three/fiber';
 import { useControls } from 'leva';
 import { useMemo, useRef } from 'react';
 import { Color, type Mesh, type RawShaderMaterial, TextureLoader } from 'three';
-import { OrbitControls } from '@react-three/drei';
-import { useFrame, useLoader } from '@react-three/fiber';
+
 import flagAsset from './assets/flag.png';
 import fragmentShader from './parts/fragment/index.frag';
 import vertexShader from './parts/vertex/index.vert';
@@ -22,10 +23,10 @@ const Render = () => {
     [flagTexture]
   );
 
-  useFrame((state) => {
+  useFrame(({ clock }) => {
     if (!ref.current) return;
     const material = ref.current.material as RawShaderMaterial;
-    material.uniforms.uTime.value = state.clock.elapsedTime;
+    material.uniforms.uTime.value = clock.elapsedTime;
     material.uniforms.uColor.value.set(color);
   });
 

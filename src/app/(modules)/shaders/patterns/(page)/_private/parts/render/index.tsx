@@ -1,7 +1,8 @@
-import { useRef } from 'react';
-import type { Mesh } from 'three';
 import { OrbitControls } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
+import { useRef } from 'react';
+import type { Mesh } from 'three';
+
 import fragmentShader from './parts/fragment/index.frag';
 import vertexShader from './parts/vertex/index.vert';
 
