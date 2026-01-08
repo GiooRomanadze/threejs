@@ -9,7 +9,7 @@ import vertexShader from './parts/vertex/index.vert';
 const Render = () => {
   const ref = useRef<Mesh>(null);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!ref.current) return;
   });
 
