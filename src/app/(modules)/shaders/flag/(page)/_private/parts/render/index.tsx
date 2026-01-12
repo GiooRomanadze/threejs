@@ -1,12 +1,11 @@
-import { OrbitControls } from '@react-three/drei';
-import { useFrame, useLoader } from '@react-three/fiber';
 import { useControls } from 'leva';
 import { useMemo, useRef } from 'react';
+import { OrbitControls } from '@react-three/drei';
+import { useFrame, useLoader } from '@react-three/fiber';
 import { Color, type Mesh, type RawShaderMaterial, TextureLoader } from 'three';
-
 import flagAsset from './assets/flag.png';
-import fragmentShader from './parts/fragment/index.frag';
 import vertexShader from './parts/vertex/index.vert';
+import fragmentShader from './parts/fragment/index.frag';
 
 const Render = () => {
   const ref = useRef<Mesh>(null);

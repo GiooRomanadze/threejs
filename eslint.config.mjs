@@ -52,7 +52,7 @@ const rules = {
   '@typescript-eslint/naming-convention': ['error', tsNaming],
 
   'perfectionist/sort-imports': ['error', { type: 'line-length', newlinesBetween: 0, sortSideEffects: true }],
-  'perfectionist/sort-jsx-props': ['error', { groups: { ...sortAttributes } }],
+  'perfectionist/sort-jsx-props': ['error', sortAttributes],
 };
 
 export default defineConfig([
