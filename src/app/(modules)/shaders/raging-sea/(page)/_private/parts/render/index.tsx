@@ -11,6 +11,10 @@ const controls = {
   uBigWavesFrequency: { value: { x: 4, y: 1.5 }, step: 0.1, min: 0, max: 10 },
   uBigWavesSpeed: { value: 0.75, min: 0, max: 10, step: 0.001 },
 
+  uSmallWavesElevation: { value: 0.15, min: 0, max: 1, step: 0.001 },
+  uSmallWavesFrequency: { value: 3, min: 0, max: 30, step: 0.001 },
+  uSmallWavesSpeed: { value: 0.2, min: 0, max: 4, step: 0.001 },
+
   uDepthColor: { value: '#186691' },
   uSurfaceColor: { value: '#9bd8ff' },
   uColorOffset: { value: 0.08, min: 0, max: 1, step: 0.001 },
@@ -23,6 +27,11 @@ const Render = () => {
     uBigWavesElevation,
     uBigWavesFrequency,
     uBigWavesSpeed,
+
+    uSmallWavesElevation,
+    uSmallWavesFrequency,
+    uSmallWavesSpeed,
+
     uDepthColor,
     uSurfaceColor,
     uColorOffset,
@@ -38,14 +47,20 @@ const Render = () => {
 
   const uniforms = useMemo(
     () => ({
+      uTime: { value: 0 },
+
       uBigWavesElevation: { value: controls.uBigWavesElevation.value },
       uBigWavesFrequency: { value: controls.uBigWavesFrequency.value },
       uBigWavesSpeed: { value: controls.uBigWavesSpeed.value },
+
+      uSmallWavesElevation: { value: controls.uSmallWavesElevation.value },
+      uSmallWavesFrequency: { value: controls.uSmallWavesFrequency.value },
+      uSmallWavesSpeed: { value: controls.uSmallWavesSpeed.value },
+
       uDepthColor: { value: new Color(controls.uDepthColor.value) },
       uSurfaceColor: { value: new Color(controls.uSurfaceColor.value) },
       uColorOffset: { value: controls.uColorOffset.value },
       uColorMultiplier: { value: controls.uColorMultiplier.value },
-      uTime: { value: 0 },
     }),
     []
   );
@@ -58,6 +73,11 @@ const Render = () => {
     uniforms.uBigWavesElevation.value = uBigWavesElevation;
     uniforms.uBigWavesFrequency.value = uBigWavesFrequency;
     uniforms.uBigWavesSpeed.value = uBigWavesSpeed;
+
+    uniforms.uSmallWavesElevation.value = uSmallWavesElevation;
+    uniforms.uSmallWavesFrequency.value = uSmallWavesFrequency;
+    uniforms.uSmallWavesSpeed.value = uSmallWavesSpeed;
+
     uniforms.uDepthColor.value = new Color(uDepthColor);
     uniforms.uSurfaceColor.value = new Color(uSurfaceColor);
     uniforms.uColorOffset.value = uColorOffset;
@@ -66,6 +86,11 @@ const Render = () => {
     uBigWavesElevation,
     uBigWavesFrequency,
     uBigWavesSpeed,
+
+    uSmallWavesElevation,
+    uSmallWavesFrequency,
+    uSmallWavesSpeed,
+
     uDepthColor,
     uSurfaceColor,
     uColorOffset,
@@ -77,7 +102,7 @@ const Render = () => {
       <OrbitControls />
 
       <mesh ref={ref} rotation-x={-Math.PI * 0.5}>
-        <planeGeometry args={[1, 1, 124, 124]} />
+        <planeGeometry args={[2, 2, 512, 512]} />
         <rawShaderMaterial vertexShader={vertexShader} fragmentShader={fragmentShader} uniforms={uniforms} />
       </mesh>
     </>
