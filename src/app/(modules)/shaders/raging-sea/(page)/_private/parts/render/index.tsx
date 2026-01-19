@@ -102,7 +102,7 @@ const Render = () => {
       <OrbitControls />
 
       <mesh ref={ref} rotation-x={-Math.PI * 0.5}>
-        <planeGeometry args={[2, 2, 512, 512]} />
+        <planeGeometry args={[2, 2, 2024, 2024]} />
         <rawShaderMaterial vertexShader={vertexShader} fragmentShader={fragmentShader} uniforms={uniforms} />
       </mesh>
     </>
